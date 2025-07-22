@@ -1,25 +1,21 @@
-const parent = React.createElement(
-  "div",
-  { id: "parent" },[React.createElement("div", { id: "child1" }, [
-    React.createElement("h1", { id: "heading" }, "Hello From React!"),
+const parent = React.createElement("div", { id: "parent" }, [
+  React.createElement("div", { id: "child1" }, [
     React.createElement(
-      "h2",
-      { id: "heading2" },
-      "Hello From React- heading2!"
+      "h1",
+      { id: "heading1" },
+      "This is heading 1 from Child1"
     ),
-  ]),[React.createElement("div",{id:"child2"},[
-    React.createElement("h1", { id: "heading" }, "Hello From React!"),
     React.createElement(
-      "h2",
+      "h1",
       { id: "heading2" },
-      "Hello From React- heading2!"
-    )
+      "This is heading 2 from Child2"
+    ),
+  ]),
+  React.createElement("div", { id: "child2" }, "This is from Child2"),
+]);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(parent);
 
-  ])]]
-  
-);
-const root1 = ReactDOM.createRoot(document.getElementById("root"));
-root1.render(parent);
 // Now parent and child1 divs has been created with message from child1.
 
 // const heading = React.createElement("h1",{id:"heading"},"Hello World from React!") // Finally it is an object.
