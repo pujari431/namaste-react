@@ -1,0 +1,20 @@
+{
+  "name": "namaste_react",
+  "version": "1.0.0",
+  "description": "This is namaste react application",
+  "homepage": "https://github.com/pujari431/namaste-react#readme",
+  "bugs": {
+    "url": "https://github.com/pujari431/namaste-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pujari431/namaste-react.git"
+  },
+  "license": "ISC",
+  "author": "Pujari Balaji",
+  "type": "commonjs",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  }
+}
