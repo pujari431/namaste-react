@@ -1,20 +1,20 @@
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child1" }, [
-    React.createElement(
-      "h1",
-      { id: "heading1" },
-      "This is heading 1 from Child1"
-    ),
-    React.createElement(
-      "h1",
-      { id: "heading2" },
-      "This is heading 2 from Child2"
-    ),
-  ]),
-  React.createElement("div", { id: "child2" }, "This is from Child2"),
-]);
+import React from "react";
+import ReactDOM from 'react-dom/client';
+
+const parent = React.createElement("div", { id: "child1" }, [
+  React.createElement(
+    "h1",
+    { id: "heading1" }, // First h1
+    "This is heading 1 from Child1"
+  ),
+  React.createElement(
+    "h1",
+    { id: "heading2" }, // Second h1
+    "This is heading 2 from Child2"
+  ),
+])
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+root.render(parent)
 
 // Now parent and child1 divs has been created with message from child1.
 
