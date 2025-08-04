@@ -1,32 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import logo from "./assets/logo.png";
-
-//React Element is object initially but when we render this to DOM this is become HTML element.
-
-// First Header component we are designing
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo">
-        <img src={logo} />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-// Here we are making a style component that can be used as inline CSS.
-const stylecard = {
-  backgroundColor: "#f0f0f0",
-};
-// This data I have got from Swiggy API
 const resData = [
   {
     info: {
@@ -407,53 +378,4 @@ const resData = [
   },
 ];
 
-//Here we are going to plan RestaurantCard component
-// Here we have used props.
-const RestaurantCard = ({ resData }) => {
-  if (!resData || !resData.info) return null;
-
-  // Here we have done optional chaining
-  const { cloudinaryImageId, name, cuisines, avgRating, sla } = resData.info;
-
-  const imageURL = cloudinaryImageId
-    ? `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${cloudinaryImageId}`
-    : "https://via.placeholder.com/508x320?text=No+Image"; // fallback image
-
-  return (
-    <div className="res-card" style={stylecard}>
-      <img className="res-logo" alt="res-logo" src={imageURL} />
-      <h4>Hotel Name : {name}</h4>
-      <h5>Cuisines : {cuisines.join(", ")}</h5>
-      <h5>Average Rating : {avgRating}</h5>
-      <h5>Estimated Delivery Time : {sla?.deliveryTime} minutes</h5>
-    </div>
-  );
-};
-
-// Here we are going to build body component
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search-bar">Search</div>
-      {/* Here Resto-card many will be there so for that we will build seperate component */}
-      <div className="res-container">
-        {resData.map((restaurant) => (
-          <RestaurantCard resData={restaurant} key={restaurant.info.id} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-// This is our Main App Layout Component
-const AppLayout = () => {
-  return (
-    <div className="App">
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+export default resData;
