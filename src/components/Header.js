@@ -8,7 +8,7 @@ const Header = () => {
         <img src={logo} alt="This is company's logo" />
       </div>
       <div className="nav-items">
-        <ul>
+        <ul className="menu-bar">
           <li>Home</li>
           <li>About Us</li>
           <li>Contact Us</li>
