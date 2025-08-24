@@ -17,7 +17,7 @@ const RestaurantCard = ({ resData }) => {
   return (
     <div className="res-card" style={stylecard}>
       <img className="res-logo" alt="res-logo" src={imageURL} />
-      <h4>Hotel Name : {name}</h4>
+      <h4>{name}</h4>
       <h5>Cuisines : {cuisines.join(", ")}</h5>
       <h5>Average Rating : {avgRating}</h5>
       <h5>Estimated Delivery Time : {sla?.deliveryTime} minutes</h5>
