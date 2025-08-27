@@ -16,7 +16,7 @@ const Body = () => {
   const fetchData = async () => {
     // Here data will be in form of promise,because this happens with fetch()
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://api.allorigins.win/raw?url=https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const jsondata = await data.json();
     console.log(jsondata);
@@ -71,9 +71,9 @@ const Body = () => {
             // Here we have to write filter code bcoz we are going to show
             // only top rated restaurants
             const filteredList = resList.filter(
-              (res) => res.info.avgRating >= 4
+              (res) => res.info.avgRating > 4
             );
-            setresData(filteredList);
+            setFilteredRestaurants(filteredList);
           }}
         >
           Top Rated Restaurants
