@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "../../assets/logo.png";
 
 // First Header component we are designing
@@ -7,6 +7,15 @@ const Header = () => {
   const handleLogin = () => {
     setLoggedIn((prev) => !prev);
   };
+  // Here useEffect is rendered for every time header component is rendered.
+  // To handle that useEffect we need to use dependency array
+  useEffect(() => {
+    console.log("Component Rendered");
+  }, []);
+
+  // Here also we are console logging to check which will render first
+  console.log("Header Rendered");
+
   return (
     <div className="header">
       <div className="logo">

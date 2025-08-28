@@ -15,25 +15,24 @@ const Body = () => {
   }, []);
   const fetchData = async () => {
     // Here data will be in form of promise,because this happens with fetch()
-    const data = await fetch(
-      "https://api.allorigins.win/raw?url=https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    const apidata = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
-    const jsondata = await data.json();
-    console.log(jsondata);
+    const jsondata = await apidata.json();
+
     setresData(
-      //Here I am going to perform optinal chaining
-      jsondata.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+      jsondata.data.cards[4].card.card.gridElements.infoWithStyle?.restaurants
     );
+    setFilteredRestaurants(
+      jsondata.data.cards[4].card.card.gridElements.infoWithStyle?.restaurants
+    );
+
     // Here we are using this method to call all the res data without modifying
     // the original data. We are making a copy of it.
-    setFilteredRestaurants(
-      jsondata.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
-    );
   };
 
   // This is for search option
   const [searchText, setsearchText] = useState("");
-  console.log("Body Rendered");
 
   // Here loading spinner we are using to load a spinner while API
   // is getting data
