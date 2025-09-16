@@ -82,6 +82,8 @@ const Body = () => {
       {/* Here Resto-card many will be there so for that we will build seperate component */}
       <div className="res-container">
         {filteredrestaurants.map((restaurant) => (
+          // Here onclick of every restro element it will re-direct to it's specific page
+          // with the help of this Link
           <Link
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
