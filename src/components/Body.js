@@ -22,10 +22,10 @@ const Body = () => {
     const jsondata = await apidata.json();
 
     setresData(
-      jsondata.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      jsondata.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
     );
     setFilteredRestaurants(
-      jsondata.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      jsondata.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
     );
 
     // Here we are using this method to call all the res data without modifying

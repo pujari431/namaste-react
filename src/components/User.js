@@ -5,7 +5,14 @@ const User = () => {
 
   // Here we are using UseEffect for API Calls
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      console.log("Namaste React by userclass");
+    }, 1000);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
   return (
     <div className="user-card">
       <h1>Count :{count}</h1>

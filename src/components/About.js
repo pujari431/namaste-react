@@ -44,6 +44,7 @@ class About extends React.Component {
           name={this.state.userInfo.login}
           location={"Bangalore(class)"}
         />
+        <User />
       </div>
     );
   }
