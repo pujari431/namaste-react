@@ -1,40 +1,53 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { MENU_API_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
-  // Here when this component render we will make an API Call here.
-  // Here we are using dependency array because we don't want to call API
-  // for every render of the component.
-  // Here we are going to use Params because we are going to make resID as dynamic
   const { restaurantId } = useParams();
-  console.log(restaurantId);
+  // const [resInfo, setResInfo] = useState(null);
+  // // Here when this component render we will make an API Call here.
+  // // Here we are using dependency array because we don't want to call API
+  // // for every render of the component.
+  // // Here we are going to use Params because we are going to make resID as dynamic
 
-  useEffect(() => {
-    fetchMenu();
-  }, [restaurantId]);
-  //Here we have added resId as Dependency arrays whenever resID changes use Effect
-  // should fetch the data means API call should happen
-  const fetchMenu = async () => {
-    const data = await fetch(
-      MENU_API_URL + restaurantId + "&catalog_qa=undefined&submitAction=ENTER"
-    );
-    const json = await data.json();
-    setResInfo(json.data);
-  };
-  console.log(resInfo);
-  // Here if resInfo is empty show shimmer UI
-  // Else return the UI. We have used ternary operator
-  const restaurantInfo = resInfo?.cards?.[2]?.card?.card?.info;
-  if (!restaurantInfo) {
+  // // Here now what if we can implement a custom hook. That can fetch data for us
+  // // Also this component will be clean and follows SRP principle. Also this component
+  // // need not to worry about how data is being fetched.All fetching logic will be there
+  // // custom hook only.
+  // Here we are using our custom hook
+  const resInfo = useRestaurantMenu(restaurantId);
+
+  // console.log(restaurantId);
+
+  // useEffect(() => {
+  //   fetchMenu();
+  // }, [restaurantId]);
+  // //Here we have added resId as Dependency arrays whenever resID changes use Effect
+  // // should fetch the data means API call should happen
+  // const fetchMenu = async () => {
+  //   const data = await fetch(
+  //     MENU_API_URL + restaurantId + "&catalog_qa=undefined&submitAction=ENTER"
+  //   );
+  //   const json = await data.json();
+  //   setResInfo(json.data);
+  // };
+  // console.log(resInfo);
+  // // Here if resInfo is empty show shimmer UI
+  // // Else return the UI. We have used ternary operator
+  // const restaurantInfo = resInfo?.cards?.[2]?.card?.card?.info;
+  if (!resInfo) {
     return <Shimmer />;
   }
+  const restaurantInfo = resInfo?.cards?.[2]?.card?.card?.info;
   //destructuring the code
   // above step we have checked that resInfo has some data, if it has some data
   // then only we will destructure it.
+  if (!restaurantInfo) {
+    return <Shimmer />;
+  }
+
   const {
     name: restaurantName,
     city,
